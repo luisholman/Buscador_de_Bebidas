@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Button, Form, Row, Col, Alert } from 'react-bootstrap'
 import { useCategorias } from '../hooks/useCategorias'
+import useBebidas from '../hooks/useBebidas'
 
 export const Formulario = () => {
 
@@ -11,6 +12,7 @@ export const Formulario = () => {
 
     const [alerta, setAlerta] = useState('')
     const { categorias } = useCategorias()
+    const { consultarBebida } = useBebidas()
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -20,6 +22,7 @@ export const Formulario = () => {
             return
         }
         setAlerta('')
+        consultarBebida(busqueda)
     }
 
   return (
@@ -73,8 +76,10 @@ export const Formulario = () => {
 
             <Row className='justify-content-end '>
                 <Col md={3}>
-                <Button className='btn btn-danger text-uppercase w-100'
+                <Button 
                 type='submit'
+                className='btn btn-danger text-uppercase w-100'
+                
                 >
                     Buscar Bebidas
                 </Button>
