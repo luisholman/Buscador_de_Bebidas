@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button, Form, Row, Col, Alert } from 'react-bootstrap'
 import { useCategorias } from '../hooks/useCategorias'
-import useBebidas from '../hooks/useBebidas'
+import {useBebidas} from '../hooks/useBebidas'
 
 export const Formulario = () => {
 
@@ -74,7 +74,7 @@ export const Formulario = () => {
                 </Form.Group>
             </Col>
 
-            <Row className='justify-content-end '>
+            <Row className='justify-content-end'>
                 <Col md={3}>
                 <Button 
                 type='submit'
