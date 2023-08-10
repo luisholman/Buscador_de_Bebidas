@@ -38,7 +38,7 @@ const mostrarIngredientes= ()=>{
                 <h2>Instrucciones</h2>
                 {receta.strInstructions}
                 <h2>Ingredientes y cantidades</h2>
-                {mostrarIngredientes()}
+                {mostrarIngredientes()} 
             </div>
         </Modal.Body>
     </Modal>
