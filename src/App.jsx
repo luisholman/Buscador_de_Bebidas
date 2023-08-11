@@ -4,13 +4,14 @@ import { CategoriasProvider } from "./context/Categorias"
 import { BebidasProvider } from "./context/BebidasProvider"
 import { ListadoBebidas } from "./componentes/ListadoBebidas"
 import { ModalBebida } from "./componentes/ModalBebida"
-
+import imgDrink from './assets/drinks.svg'
 
 function App() {
   return (
     <CategoriasProvider>
       <BebidasProvider>
         <header className='py-5'>
+          <img src={imgDrink} alt="" />
           <h1>Buscador de Bebidas</h1>
         </header>
 
