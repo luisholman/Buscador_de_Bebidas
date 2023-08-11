@@ -40,7 +40,7 @@ export const Formulario = () => {
                             type='text'
                             placeholder='Ej: Tequila, Vodka, etc'
                             name='nombre'
-                            value={busqueda.categoria}
+                            value={busqueda.nombre}
                             onChange={e => setBusqueda({
                                 ...busqueda,
                                 [e.target.name]: e.target.value
@@ -55,7 +55,7 @@ export const Formulario = () => {
                         <Form.Select
                             id="categoria"
                             name="categoria"
-                            value={busqueda.nombre}
+                            value={busqueda.categoria}
                             onChange={e => setBusqueda({
                                 ...busqueda,
                                 [e.target.name]: e.target.value
