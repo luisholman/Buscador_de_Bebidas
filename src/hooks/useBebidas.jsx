@@ -1,8 +1,8 @@
 
-import {useContext} from 'react'
-import  {BebidasContext}  from '../context/BebidasProvider'
+import { useContext } from 'react'
+import { BebidasContext } from '../context/BebidasProvider'
 
- export const useBebidas = () => {
+export const useBebidas = () => {
   return useContext(BebidasContext)
 }
 

@@ -1,17 +1,17 @@
-import {useState, useEffect, useContext, createContext} from 'react'
+import { useState, useEffect, useContext, createContext } from 'react'
 import axios from 'axios'
 
-export const CategoriasContext = createContext ()
+export const CategoriasContext = createContext()
 
-export const CategoriasProvider = ({children})=>{
+export const CategoriasProvider = ({ children }) => {
 
     const [categorias, setCategorias] = useState([]);
 
-    const obtenerCategorias = async () =>{
+    const obtenerCategorias = async () => {
         try {
-            const url= 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'
-            
-            const {data} = await axios(url)
+            const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'
+
+            const { data } = await axios(url)
 
             setCategorias(data.drinks)
 
@@ -19,15 +19,15 @@ export const CategoriasProvider = ({children})=>{
             console.log(error)
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         obtenerCategorias()
-    },[])
+    }, [])
 
-    return(
+    return (
         <CategoriasContext.Provider
-        value={{
-            categorias
-        }}
+            value={{
+                categorias
+            }}
         >
             {children}
         </CategoriasContext.Provider>

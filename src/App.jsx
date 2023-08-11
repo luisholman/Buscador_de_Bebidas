@@ -16,9 +16,9 @@ function App() {
 
         <Container className="mt-5" >
           <Formulario />
-          <ListadoBebidas/>
+          <ListadoBebidas />
 
-          <ModalBebida/>
+          <ModalBebida />
         </Container>
       </BebidasProvider>
     </CategoriasProvider>

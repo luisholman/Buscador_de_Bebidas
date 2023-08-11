@@ -1,65 +1,65 @@
-import {useState, useEffect, createContext} from 'react'
+import { useState, useEffect, createContext } from 'react'
 import axios from 'axios'
 
-export const BebidasContext = createContext ()
+export const BebidasContext = createContext()
 
-export const BebidasProvider = ({children})=>{
-    const [bebidas, setBebidas]= useState([])
-    const [modal,setModal] = useState(false)
+export const BebidasProvider = ({ children }) => {
+    const [bebidas, setBebidas] = useState([])
+    const [modal, setModal] = useState(false)
     const [bebidaId, setBebidaId] = useState(null)
-    const [receta, setReceta]= useState ({})
+    const [receta, setReceta] = useState({})
     const [cargando, setCargando] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
         setCargando(true)
-        const obtenerReceta = async ()=>{
-            if(!bebidaId) return
+        const obtenerReceta = async () => {
+            if (!bebidaId) return
 
             try {
-                const url =`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${bebidaId}`
+                const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${bebidaId}`
 
-                const {data} = await axios (url)
+                const { data } = await axios(url)
                 setReceta(data.drinks[0])
             } catch (error) {
                 console.log(error)
-            }finally{
+            } finally {
                 setCargando(false)
             }
         }
         obtenerReceta()
-    },[bebidaId])
+    }, [bebidaId])
 
-   const consultarBebida = async datos => {
-    try {
-        const url =  `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${datos.nombre}&c=${datos.categoria}`
+    const consultarBebida = async datos => {
+        try {
+            const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${datos.nombre}&c=${datos.categoria}`
 
-        const {data} = await axios(url)
-        setBebidas(data.drinks)
-    } catch (error) {
-        console.log(error)
+            const { data } = await axios(url)
+            setBebidas(data.drinks)
+        } catch (error) {
+            console.log(error)
+        }
     }
-   }
 
-   const handleModalClick = () =>{
-    setModal(!modal)
-   }
+    const handleModalClick = () => {
+        setModal(!modal)
+    }
 
-   const handleBebidaIdClick= id =>{
-    setBebidaId(id)
-   }
+    const handleBebidaIdClick = id => {
+        setBebidaId(id)
+    }
 
-    return(
+    return (
         <BebidasContext.Provider
-        value={{
-            consultarBebida,
-            bebidas,
-            handleModalClick,
-            modal,
-            handleBebidaIdClick,
-            receta,
-            cargando
-            
-        }}
+            value={{
+                consultarBebida,
+                bebidas,
+                handleModalClick,
+                modal,
+                handleBebidaIdClick,
+                receta,
+                cargando
+
+            }}
         >
             {children}
         </BebidasContext.Provider>
